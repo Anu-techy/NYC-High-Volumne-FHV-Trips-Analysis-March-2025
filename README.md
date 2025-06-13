@@ -14,7 +14,16 @@ technology providers authorized under the Taxicab & Livery Passenger Enhancement
 
 **About Data**
 
-TLC Trip Record Data
+TLC Trip Record Data used contains:
+
+1. Yellow Taxi Trip Records (PARQUET) of March 2025 - sampled_dfy.shape - (99562, 10)
+
+2. Green Taxi Trip Records (PARQUET) of March 2025
+
+3. High Volume For-Hire Vehicle Trip Records (PARQUET) of March 2025, sampled_dfhvhv.shape - (149428, 12)
+
+4. Taxi Zone Lookup Table (CSV)
+
 
 Yellow and green taxi trip records include fields capturing pickup and drop-off dates/times, pickup and drop-off locations,
 trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts.
