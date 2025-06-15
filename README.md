@@ -2,9 +2,7 @@
 is the agency responsible for licensing and regulating New York City's Medallion (Yellow) taxi cabs, 
 for-hire vehicles (community-based liveries, black cars and luxury limousines), 
 commuter vans, and paratransit vehicles.
-
-          https://www.nyc.gov/site/tlc/about/about-tlc.page
-
+        
 Over 200,000 TLC licensees complete approximately 1,000,000 trips each day.
 
 **Data Collection**
@@ -12,18 +10,21 @@ Over 200,000 TLC licensees complete approximately 1,000,000 trips each day.
 The data used in the attached datasets were collected and provided to the NYC Taxi and Limousine Commission (TLC) by 
 technology providers authorized under the Taxicab & Livery Passenger Enhancement Programs (TPEP/LPEP).
 
+ Source:                    https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
+                    
 **About Data**
 
 TLC Trip Record Data used contains:
 
-1. Yellow Taxi Trip Records (PARQUET) of March 2025 - sampled_dfy.shape - (99562, 10)
+1. Yellow Taxi Trip Records (PARQUET) of March 2025 - (4145257, 20)
 
-2. Green Taxi Trip Records (PARQUET) of March 2025
+2. Green Taxi Trip Records (PARQUET) of March 2025 - (51539, 21)
 
-3. High Volume For-Hire Vehicle Trip Records (PARQUET) of March 2025, sampled_dfhvhv.shape - (149428, 12)
+3. High Volume For-Hire Vehicle Trip Records (PARQUET) of March 2025 - (20536879, 25)
 
-4. Taxi Zone Lookup Table (CSV)
+4. fhv_tripdata_2025-03.parquet - (2182992, 7)
 
+5. Taxi Zone Lookup Table (CSV) - (265, 4)
 
 Yellow and green taxi trip records include fields capturing pickup and drop-off dates/times, pickup and drop-off locations,
 trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts.
