@@ -1,7 +1,21 @@
+# NYC Taxi Trip Data Analytics
+
+Project Overview
+
+1.  Data cleaning and Preprocessing of Data in pandas.
+2.  Trip Metrics, Location and Airport Trips Analysis and Insight Generation using python (pandas)
+     Data visualizations using seaborn, matplotlib.
+3.  Generated Summarized reports in MySQL
+4.  An interactive Power BI dashboard that analyzes taxi trip data to uncover key patterns in pickup behavior, passenger segmentation, fare distribution, and payment preferences.
+
+
+
 **Client:** The New York City Taxi and Limousine Commission (TLC), 
 is the agency responsible for licensing and regulating New York City's Yellow taxi cabs and for hire vehicles..
         
 Over 200,000 TLC licensees complete approximately 1,000,000 trips each day.
+
+
 
 **Data Collection**
 
