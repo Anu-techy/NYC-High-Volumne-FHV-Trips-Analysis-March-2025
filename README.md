@@ -1,49 +1,70 @@
-# NYC Taxi Trip Data Analytics
+🚖 NYC Taxi Trip Data Analysis (20M+ Trips, March 2025)
+📖 Overview
 
-Project Overview
+This project is an end-to-end analysis of NYC Taxi Trip data (20M+ records, March 2025) using Python, SQL, Power BI, and Machine Learning.
+The goal was to uncover trip patterns, passenger behavior, fare distribution, and demand forecasting to enable smarter decision-making for transportation planning.
 
-1.  Data cleaning and Preprocessing of Data in pandas.
-2.  Trip Metrics, Location and Airport Trips Analysis and Insight Generation using python (pandas)
-     Data visualizations using seaborn, matplotlib.
-3.  Generated Summarized reports in MySQL
-4.  An interactive Power BI dashboard that analyzes taxi trip data to uncover key patterns in pickup behavior, passenger segmentation, fare distribution, and payment preferences.
+🔧 Tech Stack
 
+Programming & Libraries: Python (Pandas, Matplotlib, Seaborn, Scikit-learn)
 
+Database: MySQL (Summarized Reports, Stored Procedures, Query Optimization)
 
-**Client:** The New York City Taxi and Limousine Commission (TLC), 
-is the agency responsible for licensing and regulating New York City's Yellow taxi cabs and for hire vehicles..
-        
-Over 200,000 TLC licensees complete approximately 1,000,000 trips each day.
+Visualization: Power BI (Interactive Dashboards)
 
+Machine Learning: Anomaly Detection, Clustering, Trip Volume Prediction
 
+📂 Project Workflow
 
-**Data Collection**
+Data Cleaning & Preprocessing – handled missing values, outliers, and formatted datetime features using Pandas.
 
-The data used in the attached datasets were collected and provided to the NYC Taxi and Limousine Commission (TLC) by 
-technology providers authorized under the Taxicab & Livery Passenger Enhancement Programs (TPEP/LPEP).
+Exploratory Data Analysis (EDA) – trip metrics, pickup location trends, airport trips analysis with Matplotlib/Seaborn.
 
- Source:                    https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
-                    
-**About Data**
+SQL Analysis – summarized reports, indexing, stored procedures for efficiency and reusability.
 
-TLC Trip Record Data used contains:
+Power BI Dashboard – interactive dashboard covering pickup behavior, passenger segmentation, fare distribution, and payment preferences.
 
-1. **High Volume For-Hire Vehicle Trip Records** (PARQUET) of March 2025 - (20536879, 25)
+Machine Learning Models – applied anomaly detection, clustering for demand-level zones, and forecasting for trip volume & demand.
 
-   Data Dictionary: https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_hvfhs.pdf
+📊 Dashboard Preview
 
-4. **Taxi Zone Lookup Table** (CSV) - (265, 4)
+(Insert 1–2 screenshots from your Power BI dashboard here — add them in a visuals/ folder and link like this)
 
-   Columns: LocationID, Borough, Zone, service_zone
+▶️ Demo Video
 
-New York City is made up of **5 boroughs**, which are like big districts or zones:
+🎥 YouTube Demo
 
-Manhattan - Financial, business, tourism hub
+📑 Repository Contents
 
-Brooklyn - Densely populated, arts & culture
+notebooks/ → Jupyter notebooks for preprocessing, analysis & ML
 
-Queens - Diverse, home to JFK & LGA airports
+sql/ → MySQL scripts (summarized reports, stored procedures)
 
+powerbi/ → Power BI files & dashboard screenshots
+
+src/ → Python scripts for cleaning & modeling
+
+visuals/ → PNGs of charts & dashboards
+
+requirements.txt → Python dependencies
+
+🚀 Future Enhancements
+
+Automate ETL pipeline for daily data refresh
+
+Deploy ML models as REST APIs
+
+Enhance dashboard with live streaming data
+
+👤 Author
+
+[Your Name]
+
+💻 GitHub: [Your Profile Link]
+
+🎥 YouTube: [Your Channel Link]
+
+🌐 LinkedIn: [Your LinkedIn Profile]
 Bronx - Residential, Yankee Stadium
 
 Staten Island - More suburban, ferry access to NYC
