@@ -11,9 +11,9 @@ The goal was to uncover **trip patterns, passenger behavior, fare distribution, 
 
 ## 📂 Project Workflow
 - **Data Cleaning & Preprocessing** – handled missing values, outliers, and formatted datetime features using Pandas.  
-- **Exploratory Data Analysis (EDA)** – trip metrics, pickup location trends, airport trips analysis.  
+- **Exploratory Data Analysis (EDA)** – trip metrics, location trends, airport trips, congestion analysis.  
 - **SQL Analysis** – summarized reports, indexing, stored procedures for efficiency and reusability in MySQL.  
-- **Power BI Dashboard** – interactive dashboard covering trip metrics, location insights, and payment patterns.  
+- **Power BI Dashboard** – interactive dashboard covering trip metrics, location insights.  
 - **Machine Learning Models** – applied anomaly detection, clustering for demand zones, and forecasting for trip volume & demand levels.  
 
 ## 📊 Dashboard Preview
