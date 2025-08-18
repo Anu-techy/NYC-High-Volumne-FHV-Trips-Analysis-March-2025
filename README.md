@@ -1,6 +1,7 @@
-# 🚖 NYC Taxi Trip Data Analysis (20M+ Trips, March 2025)
+## 🚖 NYC Taxi Trip Data Analysis (20M+ Trips, March 2025)
 
 This project is an **end-to-end analysis** of NYC Taxi Trip data (20M+ records, March 2025) using **Python, SQL, Power BI, and Machine Learning**.  
+
 The goal was to uncover **trip patterns, passenger behavior, fare distribution, and demand forecasting** to enable smarter decision-making for transportation planning.
 
 ## 🔧 Tech Stack
