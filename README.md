@@ -1,36 +1,31 @@
-🚖 NYC Taxi Trip Data Analysis (20M+ Trips, March 2025)
-📖 Overview
+🚖 **NYC Taxi Trip Data Analysis (20M+ Trips, March 2025)**
 
 This project is an end-to-end analysis of NYC Taxi Trip data (20M+ records, March 2025) using Python, SQL, Power BI, and Machine Learning.
 The goal was to uncover trip patterns, passenger behavior, fare distribution, and demand forecasting to enable smarter decision-making for transportation planning.
 
-🔧 Tech Stack
+🔧 **Tech Stack**
 
-Programming & Libraries: Python (Pandas, Matplotlib, Seaborn, Scikit-learn)
+**Programming & Libraries**: Python (Pandas, Matplotlib, Seaborn, Scikit-learn)
 
-Database: MySQL (Summarized Reports, Stored Procedures, Query Optimization)
+**Database**: MySQL (Summarized Reports, Stored Procedures, Query Optimization)
 
-Visualization: Power BI (Interactive Dashboards)
+**Visualization**: Power BI (Interactive Dashboards)
 
-Machine Learning: Anomaly Detection, Clustering, Trip Volume Prediction
+**Machine Learning**: Anomaly Detection, Zone Clustering (demand levels), Forecasting Demandlevels and trip volume
 
-📂 Project Workflow
+📂 **Project Workflow**
 
-Data Cleaning & Preprocessing – handled missing values, outliers, and formatted datetime features using Pandas.
+**Data Cleaning & Preprocessing** – handled missing values, outliers, and formatted datetime features using Pandas.
 
-Exploratory Data Analysis (EDA) – trip metrics, pickup location trends, airport trips analysis with Matplotlib/Seaborn.
+**Exploratory Data Analysis (EDA)** – trip metrics, pickup location trends, airport trips analysis.
 
-SQL Analysis – summarized reports, indexing, stored procedures for efficiency and reusability.
+**SQL Analysis** – summarized reports, indexing, stored procedures for efficiency and reusability in MySQL
 
-Power BI Dashboard – interactive dashboard covering pickup behavior, passenger segmentation, fare distribution, and payment preferences.
+**Power BI Dashboard** – interactive dashboard covering variety of trip metrics patterns, Location analysis to draw insights.
 
-Machine Learning Models – applied anomaly detection, clustering for demand-level zones, and forecasting for trip volume & demand.
+**Machine Learning Models** – applied anomaly detection, clustering for zones (demand-level), and forecasting for trip volume & demand levels.
 
-📊 Dashboard Preview
-
-(Insert 1–2 screenshots from your Power BI dashboard here — add them in a visuals/ folder and link like this)
-
-▶️ Demo Video
+▶️ Video Description of the project
 
 🎥 YouTube Demo
 
@@ -42,11 +37,7 @@ sql/ → MySQL scripts (summarized reports, stored procedures)
 
 powerbi/ → Power BI files & dashboard screenshots
 
-src/ → Python scripts for cleaning & modeling
-
 visuals/ → PNGs of charts & dashboards
-
-requirements.txt → Python dependencies
 
 🚀 Future Enhancements
 
@@ -65,6 +56,4 @@ Enhance dashboard with live streaming data
 🎥 YouTube: [Your Channel Link]
 
 🌐 LinkedIn: [Your LinkedIn Profile]
-Bronx - Residential, Yankee Stadium
 
-Staten Island - More suburban, ferry access to NYC
