@@ -31,10 +31,8 @@ The goal was to uncover **trip patterns, passenger behavior, fare distribution, 
 ## 📑 Repository Contents
 - `notebooks/` → Jupyter notebooks for preprocessing, analysis & ML  
 - `sql/` → MySQL scripts (summarized reports, stored procedures)  
-- `powerbi/` → Power BI files & dashboard screenshots  
-- `visuals/` → PNGs of charts & dashboards  
+- `powerbi/` → Charts & Dashboard screenshots  
 
----
 
 ## 🚀 Future Enhancements
 - Automate ETL pipeline for daily data refresh  
