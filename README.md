@@ -28,6 +28,12 @@ The goal was to uncover **trip patterns, passenger behavior, fare distribution, 
 
 ---
 
+## 📊 Dataset
+- **Source:** [NYC Taxi & Limousine Commission (TLC) Trip Record Data](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)  
+- **Dictionary:** [Data Dictionary (Green Taxi)](https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_green.pdf)
+
+---
+
 ## 📑 Repository Contents
 - `notebooks/` → Jupyter notebooks for preprocessing, analysis & ML  
 - `sql/` → MySQL scripts (summarized reports, stored procedures)  
