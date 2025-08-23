@@ -1,5 +1,5 @@
 ----------------------------------------
-    1. Top 3 Driver pay for each day 
+    1. Top  Driver pay for each day 
 ----------------------------------------
 SELECT pickup_day, driver_pay, rn
 FROM (
@@ -142,6 +142,54 @@ LIMIT 10;
 |  South Ozone Park      |  South Ozone Park         |   25576      |
 ---------------------------------------------------------------------
 
+-------------------------------------------------
+  5. Peak hours of top Manhattan Zones
+-------------------------------------------------
+
+WITH ZoneTrips AS (
+    SELECT 
+        PU_Zone, 
+        SUM(total_trips) AS total_trips
+    FROM trips
+    WHERE PU_Borough = 'Manhattan'
+    GROUP BY PU_Zone
+    ORDER BY total_trips DESC
+    LIMIT 5
+),
+
+BusiestHour AS (
+    SELECT 
+        t.PU_Zone,
+        nt.pickup_hour,
+        SUM(nt.total_trips) AS total_trips,
+        ROW_NUMBER() OVER (
+            PARTITION BY t.PU_Zone 
+            ORDER BY SUM(nt.total_trips) DESC
+        ) AS rn
+    FROM ZoneTrips t
+    JOIN trips nt 
+        ON t.PU_Zone = nt.PU_Zone
+    WHERE nt.PU_Borough = 'Manhattan'
+    GROUP BY t.PU_Zone, nt.pickup_hour
+)
+
+SELECT 
+    PU_Zone, 
+    pickup_hour, 
+    total_trips
+FROM BusiestHour
+WHERE rn = 1
+ORDER BY PU_Zone;
+
+---------------------------------------------------------------------
+|  PU_Zone                              | pickup_hour | total_trips |
+---------------------------------------------------------------------
+| Clinton East                          |   22        |    11056    |
+| East Chelsea                          |   18        |    13356    |
+| East Village                          |   22        |    19038    |
+| Lower East Side                       |   23        |    15101    |
+| Midtown Center                        |   21        |    18903    |
+---------------------------------------------------------------------
 
 
 
