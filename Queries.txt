@@ -1,0 +1,38 @@
+--------------------------------------------------------------------------
+Top 3 Driver pay for each day 
+--------------------------------------------------------------------------
+SELECT pickup_day, driver_pay, rn
+FROM (
+    SELECT pickup_day,
+           driver_pay,
+           ROW_NUMBER() OVER (PARTITION BY pickup_day ORDER BY driver_pay DESC) AS rn
+    FROM trips
+    WHERE driver_pay > 100
+) ranked
+WHERE rn <= 3;
+
+-----------------------------------------------------
+|       pickup_day   |   driver_pay   |    rn    |
+-----------------------------------------------------
+|      Sunday            |       167.7        |    1     |
+|      Sunday            |       152.4        |    2     |
+|      Sunday            |      151.75      |     3    |
+|     Monday           |      148.52      |     1    |
+|     Monday           |      141.61      |     2    |
+|     Monday           |      141.16      |     3    |
+|     Tuesday           |      155.97      |     1    |
+|     Tuesday           |      151.73      |     2    |
+|     Tuesday           |      147.55      |     3    |
+|    Wednesday     |      152.94      |     1    |
+|    Wednesday     |      143.76      |     2    |
+|    Wednesday     |      138.86      |     3    |
+|     Thursday        |       174.92     |     1    |
+|     Thursday        |       140.75     |     2    |  
+|     Thursday        |       135.7       |     3    |
+|        Friday           |       142.93    |     1    |
+|        Friday           |       141.16    |     2    |
+|        Friday           |       137.74    |     3    |
+|      Saturday        |       146.36    |     1    |
+|      Saturday        |       142.84    |     2    |
+|      Saturday        |       139.85    |     3    |
+-----------------------------------------------------
