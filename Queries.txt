@@ -1,6 +1,6 @@
---------------------------------------------------------------------------
-1. Top 3 Driver pay for each day 
---------------------------------------------------------------------------
+----------------------------------------
+    1. Top 3 Driver pay for each day 
+----------------------------------------
 SELECT pickup_day, driver_pay, rn
 FROM (
     SELECT pickup_day,
@@ -37,9 +37,9 @@ WHERE rn <= 3;
 |      Saturday      |       139.85   |     3    |
 --------------------------------------------------
 
---------------------------------------------------------------------------
-2. Top 5 Pickup Zones (Average Fare per mile) 
---------------------------------------------------------------------------
+---------------------------------------------------
+   2. Top 5 Pickup Zones (Average Fare per mile) 
+---------------------------------------------------
 WITH fare_per_location AS (
     SELECT 
         PULocationID, 
@@ -79,31 +79,68 @@ LIMIT 5;
 |  West Chelsea/Hudson Yards  |       8.40           |
 ------------------------------------------------------
 
---------------------------------------------------------------------------------------------
-3. Which pickup zones have the longest average trip time per mile (lowest trip efficiency)
-----------------------------------------------------------------------------------------------
+--------------------------------
+    3. Most efficient zones
+--------------------------------
+
+WITH zone_efficiency AS (
+    SELECT 
+        l.Zone AS pickup_zone,
+        SUM(t.trip_time) AS total_minutes,
+        SUM(t.trip_miles) AS total_miles
+    FROM trips t
+    JOIN location_lookup l 
+        ON t.PULocationID = l.LocationID
+    GROUP BY l.Zone
+)
+
+SELECT pickup_zone,
+       total_minutes / NULLIF(total_miles, 0) AS avg_minutes_per_mile
+FROM zone_efficiency
+ORDER BY avg_minutes_per_mile ASC
+LIMIT 5; 
+
+-------------------------------------------------
+  4. Top pickup-dropoff zone pairs using index
+-------------------------------------------------
+
+CREATE INDEX idx_trips_pu_do ON trips (PULocationID, DOLocationID);
+
+WITH trip_counts AS (
+    SELECT 
+        PULocationID, 
+        DOLocationID, 
+        COUNT(*) AS trip_count
+    FROM trips
+    GROUP BY PULocationID, DOLocationID
+)
 
 SELECT 
-    l.Zone AS pickup_zone,
-    SUM(t.trip_time) / NULLIF(SUM(t.trip_miles), 0) AS avg_minutes_per_mile
-FROM trips t
-JOIN location_lookup l 
-    ON t.PULocationID = l.LocationID
-GROUP BY l.Zone
-ORDER BY avg_minutes_per_mile DESC
-LIMIT 5;
+    pu.Zone AS pickup_zone,
+    do.Zone AS dropoff_zone,
+    tc.trip_count
+FROM trip_counts tc
+JOIN location_lookup pu 
+    ON tc.PULocationID = pu.LocationID
+JOIN location_lookup do 
+    ON tc.DOLocationID = do.LocationID
+ORDER BY tc.trip_count DESC
+LIMIT 10;
 
---------------------------------------------------------
-|   pickup_zone              |   avg_minutes_per_mile  |
---------------------------------------------------------
-| South Williamsburg         |         5.76            |
-| Borough Park               |         5.59            |
-| Stuyvesant Heights         |         5.18            |
-| Bedford                    |         5.17            |
-| Prospect-Lefferts Gardens  |         5.14            |
---------------------------------------------------------
-
-
+---------------------------------------------------------------------
+|  pickup_zone           |   dropoff_zone            |  trip_count  |
+---------------------------------------------------------------------
+|  East New York         | East New York             |   71916      |
+|  Borough Park          |  Borough Park             |   47736      |
+|  Canarsie              |  Canarsie                 |   45028      |
+|  Crown Heights North   |  Crown Heights North      |   34018      |
+|  Bay Ridge             |  Bay Ridge                |   31205      |
+|  Astoria               |  Astoria                  |   28465      |
+|  Jackson Heights       |  Jackson Heights          |   27574      |
+|  Forest Hills          |  Forest Hills             |   27104      |
+|  South Ozone Park      |  JFK Airport              |   26098      |
+|  South Ozone Park      |  South Ozone Park         |   25576      |
+---------------------------------------------------------------------
 
 
 
