@@ -30,7 +30,7 @@ The goal was to uncover **trip patterns, passenger behavior, fare distribution, 
 
 ## 📊 Dataset
 - **Source:** [NYC Taxi & Limousine Commission (TLC) Trip Record Data](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)  
-- **Dictionary:** [Data Dictionary – High Volume FHV Trip Records](https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_hvfhs.pdf)
+- **Data Dictionary:** [High Volume FHV Trip Records](https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_hvfhs.pdf)
 ---
 
 ## 📑 Repository Contents
