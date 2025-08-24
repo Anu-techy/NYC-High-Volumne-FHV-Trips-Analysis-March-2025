@@ -23,7 +23,7 @@ The goal was to uncover **trip patterns, passenger behavior, fare distribution, 
 ---
 
 ## ▶️ Demo Video
-🎥 [YouTube Demo](https://www.youtube.com/watch?v=SHvaOIHxmbY)  
+🎥 [Dashboard YouTube Demo](https://www.youtube.com/watch?v=SHvaOIHxmbY)  
 
 ---
 
