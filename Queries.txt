@@ -80,25 +80,29 @@ LIMIT 5;
 ------------------------------------------------------
 
 --------------------------------
-    3. Most efficient zones
+    3. Most Efficient Routes
 --------------------------------
 
-WITH zone_efficiency AS (
-    SELECT 
-        l.Zone AS pickup_zone,
-        SUM(t.trip_time) AS total_minutes,
-        SUM(t.trip_miles) AS total_miles
-    FROM trips t
-    JOIN location_lookup l 
-        ON t.PULocationID = l.LocationID
-    GROUP BY l.Zone
-)
-
-SELECT pickup_zone,
-       total_minutes / NULLIF(total_miles, 0) AS avg_minutes_per_mile
-FROM zone_efficiency
-ORDER BY avg_minutes_per_mile ASC
+SELECT pu.Zone, do.Zone,
+       ROUND(SUM(trip_miles) / NULLIF(SUM(trip_time), 0), 2) AS miles_per_minute
+FROM trips t
+JOIN  location_lookup pu
+        ON t.PULocationID = pu.LocationID
+JOIN  location_lookup do
+        ON t.DOLocationID = do.LocationID
+GROUP BY pu.Zone, do.Zone
+ORDER BY miles_per_minute DESC
 LIMIT 5; 
+
+---------------------------------------------------------------
+| PU_Zone           | DO_Zone              | miles_per_minute |
+---------------------------------------------------------------
+| Bellerose         |  Sheepshead Bay      |      0.84        |
+| Manhattan Beach   |  West Concourse      |      0.83        |
+| Pelham Bay Park   |  Laurelton           |      0.83        |
+| Cobble Hill       |  Ozone Park          |       0.8        |
+| Laurelton         |  Green-Wood Cemetry  |      0.79        |
+---------------------------------------------------------------
 
 -------------------------------------------------
   4. Top pickup-dropoff zone pairs using index
@@ -190,6 +194,7 @@ ORDER BY PU_Zone;
 | Lower East Side                       |   23        |    15101    |
 | Midtown Center                        |   21        |    18903    |
 ---------------------------------------------------------------------
+
 
 
 
