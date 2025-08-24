@@ -8,7 +8,7 @@ The goal was to uncover **trip patterns, passenger behavior, fare distribution, 
 - **Programming & Libraries:** Python (Pandas, Matplotlib, Seaborn, Scikit-learn)  
 - **Database:** MySQL (Summarized Reports, Stored Procedures, Query Optimization)  
 - **Visualization:** Power BI (Interactive Dashboards)  
-- **Machine Learning:** Anomaly Detection, Zone Clustering (demand levels), Demand & Trip Volume Forecasting  
+- **Machine Learning:** Zone Clustering (demand levels), Trip Volume Forecasting  
 
 ## 📂 Project Workflow
 - **Data Cleaning & Preprocessing** – handled missing values, outliers, and formatted datetime features using Pandas.  
