@@ -9,32 +9,25 @@ FROM (
     FROM trips
     WHERE driver_pay > 100
 ) ranked
-WHERE rn <= 3;
+WHERE rn <= 2;
 
 --------------------------------------------------
 |       pickup_day   |   driver_pay   |    rn    |
 --------------------------------------------------
 |      Sunday        |       167.7    |     1    |
 |      Sunday        |       152.4    |     2    |
-|      Sunday        |      151.75    |     3    |
 |     Monday         |      148.52    |     1    |
 |     Monday         |      141.61    |     2    |
-|     Monday         |      141.16    |     3    |
 |     Tuesday        |      155.97    |     1    |
 |     Tuesday        |      151.73    |     2    |
-|     Tuesday        |      147.55    |     3    |
 |    Wednesday       |      152.94    |     1    |
 |    Wednesday       |      143.76    |     2    |
-|    Wednesday       |      138.86    |     3    |
 |     Thursday       |       174.92   |     1    |
 |     Thursday       |       140.75   |     2    |  
-|     Thursday       |       135.7    |     3    |
 |        Friday      |       142.93   |     1    |
 |        Friday      |       141.16   |     2    |
-|        Friday      |       137.74   |     3    |
 |      Saturday      |       146.36   |     1    |
 |      Saturday      |       142.84   |     2    |
-|      Saturday      |       139.85   |     3    |
 --------------------------------------------------
 
 ---------------------------------------------------
@@ -129,7 +122,7 @@ JOIN location_lookup pu
 JOIN location_lookup do 
     ON tc.DOLocationID = do.LocationID
 ORDER BY tc.trip_count DESC
-LIMIT 10;
+LIMIT 5;
 
 ---------------------------------------------------------------------
 |  pickup_zone           |   dropoff_zone            |  trip_count  |
@@ -139,42 +132,47 @@ LIMIT 10;
 |  Canarsie              |  Canarsie                 |   45028      |
 |  Crown Heights North   |  Crown Heights North      |   34018      |
 |  Bay Ridge             |  Bay Ridge                |   31205      |
-|  Astoria               |  Astoria                  |   28465      |
-|  Jackson Heights       |  Jackson Heights          |   27574      |
-|  Forest Hills          |  Forest Hills             |   27104      |
-|  South Ozone Park      |  JFK Airport              |   26098      |
-|  South Ozone Park      |  South Ozone Park         |   25576      |
 ---------------------------------------------------------------------
 
 -------------------------------------------------
   5. Peak hours of top Manhattan Zones
 -------------------------------------------------
+-- finds top 5 pickup zones in Manhattan.
 
 WITH ZoneTrips AS (
     SELECT 
-        PU_Zone, 
-        SUM(total_trips) AS total_trips
-    FROM trips
-    WHERE PU_Borough = 'Manhattan'
-    GROUP BY PU_Zone
+        l.Zone AS PU_Zone,
+        COUNT(*) AS total_trips
+    FROM trips t
+    JOIN location_lookup l 
+        ON t.PULocationID = l.LocationID
+    WHERE l.Borough = 'Manhattan'
+    GROUP BY l.Zone
     ORDER BY total_trips DESC
     LIMIT 5
 ),
 
+-- for each top zone, uses your existing pickup_hour to find which hour has the most trips.
+-- ROW_NUMBER() ensures we only keep the busiest hour per zone.
+
 BusiestHour AS (
     SELECT 
-        t.PU_Zone,
-        nt.pickup_hour,
-        SUM(nt.total_trips) AS total_trips,
+        z.PU_Zone,
+        t.pickup_hour,
+        COUNT(*) AS total_trips,
         ROW_NUMBER() OVER (
-            PARTITION BY t.PU_Zone 
-            ORDER BY SUM(nt.total_trips) DESC
+            PARTITION BY z.PU_Zone
+            ORDER BY COUNT(*) DESC
         ) AS rn
-    FROM ZoneTrips t
-    JOIN trips nt 
-        ON t.PU_Zone = nt.PU_Zone
-    WHERE nt.PU_Borough = 'Manhattan'
-    GROUP BY t.PU_Zone, nt.pickup_hour
+    FROM ZoneTrips z
+    JOIN trips t 
+        ON t.PULocationID IN (
+            SELECT LocationID 
+            FROM location_lookup l
+            WHERE l.Zone = z.PU_Zone
+              AND l.Borough = 'Manhattan'
+        )
+    GROUP BY z.PU_Zone, t.pickup_hour
 )
 
 SELECT 
@@ -194,6 +192,42 @@ ORDER BY PU_Zone;
 | Lower East Side                       |   23        |    15101    |
 | Midtown Center                        |   21        |    18903    |
 ---------------------------------------------------------------------
+
+-------------------------------------------------
+  6. Day-over-Day Changes in Total Taxi Trips 
+-------------------------------------------------
+
+WITH daily_trips AS (
+    SELECT 
+        pickup_day,
+        COUNT(*) AS total_trips
+    FROM trips
+    GROUP BY pickup_day
+)
+SELECT 
+    pickup_day,
+    total_trips,
+    LAG(total_trips) OVER (ORDER BY pickup_day) AS prev_day_trips,
+    ROUND(
+        (total_trips - LAG(total_trips) OVER (ORDER BY pickup_day)) 
+        / LAG(total_trips) OVER (ORDER BY pickup_day) * 100, 
+        2
+    ) AS trip_change_pct
+FROM daily_trips
+ORDER BY pickup_day;
+
+----------------------------------------------------------------
+| pickup_day  | total_trips | prev_day_trips | trip_change_pct |
+----------------------------------------------------------------
+| Sunday      |    3141177  |          NULL  |            NULL |
+| Monday      |    2840702  |       3141177  |            0.56 |
+| Tuesday     |    2287074  |       2840702  |          -19.48 |
+| Wednesday   |    2461483  |       2287074  |            7.62 |
+| Thursday    |    2612736  |       2461483  |            6.14 |
+| Friday      |    2830120  |       2612736  |            8.32 |
+| Saturday    |    3748082  |       2830120  |           32.43 |
+----------------------------------------------------------------
+
 
 
 
