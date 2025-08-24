@@ -15,7 +15,7 @@ The goal was to uncover **trip patterns, passenger behavior, fare distribution, 
 - **Exploratory Data Analysis (EDA)** – trip metrics, location trends, airport trips, congestion analysis.  
 - **SQL Analysis** – summarized reports, indexing, stored procedures for efficiency and reusability in MySQL.  
 - **Power BI Dashboard** – interactive dashboard covering trip metrics, location insights.  
-- **Machine Learning Models** – applied anomaly detection, clustering for demand zones, and forecasting for trip volume & demand levels.  
+- **Machine Learning Models** – Clustering for demand zones, and forecasting for trip volume.  
 
 ## 📊 Dashboard Preview
 *(Insert screenshots here from `visuals/` folder)*  
@@ -39,15 +39,8 @@ The goal was to uncover **trip patterns, passenger behavior, fare distribution, 
 - `powerbi/` → Charts & Dashboard screenshots  
 
 
-## 🚀 Future Enhancements
-- Automate ETL pipeline for daily data refresh  
-- Deploy ML models as REST APIs  
-- Enhance dashboard with live streaming data  
-
----
-
 ## 👤 Author
-**[Your Name]**  
+**Anusha**  
 - 💻 GitHub: [Your Profile Link]  
 - 🎥 YouTube: [Your Channel Link]  
 - 🌐 LinkedIn: [Your LinkedIn Profile]  
