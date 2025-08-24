@@ -37,11 +37,11 @@ The goal was to uncover **trip patterns, passenger behavior, fare distribution, 
 
 |         File                | Description |
 |-----------------------------|-------------|
-| `queries/Cleaning_Queries.sql`       | for preprocessing and handling nulls |
-| `queries/nyc_green_taxi_analysis.sql` | SQL queries for EDA and business insights |
-| `queries/stored_procedures.sql`      | Stored procedures (null counts, borough details) |
+| NYC EDA-1.ipynb, NYC EDA-2.ipynb`       | for preprocessing and handling nulls |
+| `Queries.txt` | SQL queries for EDA and business insights with results |
+| 'stored_procedures.txt`      | Stored procedures (Zone summary, borough details) |
 | `dashboards/powerbi_dashboard.pbix`  | Power BI dashboard file with interactive visuals |
-| `results/results.doc`                 | Query outputs and summary of insights |
+| `TripVolume prediction.ipynb, Clustering.ipynb`  | Machine Learning Models |
 | `README.md`                           | Project documentation |
 
 
