@@ -18,7 +18,7 @@ The goal was to uncover **trip patterns, passenger behavior, fare distribution, 
 - **Machine Learning Models** – Clustering for demand zones, and forecasting for trip volume.  
 
 ## 📊 Dashboard 
-[Trip Analysis Power BI Dashboard]](https://app.powerbi.com/groups/me/reports/09ecd170-b1bf-4d5b-a95e-fdf2c507f0c6/e50c0942fa964830a51b?experience=power-bi)
+[Trip Analysis Power BI Dashboard](https://app.powerbi.com/groups/me/reports/09ecd170-b1bf-4d5b-a95e-fdf2c507f0c6/e50c0942fa964830a51b?experience=power-bi)
 
 ---
 
