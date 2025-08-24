@@ -46,7 +46,7 @@ The goal was to uncover **trip patterns, passenger behavior, fare distribution, 
 
 
 ## 👤 Author
-**Anusha**  
+**Analysis & Dashboard by Anusha**  
 - 💻 GitHub: [https://github.com/Anu-techy]  
 - 🎥 YouTube: [https://www.youtube.com/@DataDiveWithAnvi]  
 - 🌐 LinkedIn: [https://www.linkedin.com/in/anusha-k-4ba9bb218/]  
