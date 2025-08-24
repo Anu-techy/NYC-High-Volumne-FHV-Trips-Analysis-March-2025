@@ -1,5 +1,5 @@
 /******************************************************
--- Stored procedure to get top zone details for a given Borough
+-- Stored procedure to averages for a given Borough
 *******************************************************/
 DELIMITER $$
 
@@ -19,16 +19,47 @@ BEGIN
     WHERE t.pickup_hour = input_hour
       AND l.Borough = input_borough;
 END$$
-
 DELIMITER ;
 
 
 
 CALL  GetTripAveragesByHourBorough('Queens', 1);
 
-------------------------------------------------------------------------------------
+--------------------------------------------------------------------
 |   avg_fare  | avg_congestion_fare  |  avg_tip | avg_driver_pay   | 
--------------------------------------------------------------------------------------
-|    25.38       |             2.87                     |    1.24     |          19.84             |
--------------------------------------------------------------------------------------
+--------------------------------------------------------------------
+|    25.38    |       2.87           |    1.24  |      19.84       |
+--------------------------------------------------------------------
+
+/******************************************************
+    -- Stored procedure to get zone-level totals
+*******************************************************/
+DELIMITER $$
+
+CREATE PROCEDURE GetZoneSummary ( 
+    IN input_zone VARCHAR(100)
+)
+BEGIN
+    SELECT
+       l.Zone AS pickup_zone,
+       COUNT(*) AS total_trips,
+       ROUND(SUM(t.driver_pay), 1) AS total_driver_pay,
+       ROUND(SUM(t.tip_amount), 1) AS total_tips
+    FROM trips t
+    JOIN location_lookup l 
+        ON t.PULocationID = l.LocationID
+    WHERE l.Zone = input_zone
+    GROUP BY l.Zone;
+END$$
+DELIMITER ;
+
+
+
+CALL GetZoneSummary("Astoria");
+
+--------------------------------------------------------------------
+|   pickup_zone  | total_trips  |  total_driver_pay | total_tips   | 
+--------------------------------------------------------------------
+|   Astoria      |    193777    |    3198351.9      |  165006.5    |
+--------------------------------------------------------------------
 
