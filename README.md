@@ -33,10 +33,17 @@ The goal was to uncover **trip patterns, passenger behavior, fare distribution, 
 - **Data Dictionary:** [High Volume FHV Trip Records](https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_hvfhs.pdf)
 ---
 
-## 📑 Repository Contents
-- `notebooks/` → Jupyter notebooks for preprocessing, analysis & ML  
-- `sql/` → MySQL scripts (summarized reports, stored procedures)  
-- `powerbi/` → Charts & Dashboard screenshots  
+##  📂 Project Structure
+
+|         File                | Description |
+|-----------------------------|-------------|
+| `queries/Cleaning_Queries.sql`       | for preprocessing and handling nulls |
+| `queries/nyc_green_taxi_analysis.sql` | SQL queries for EDA and business insights |
+| `queries/stored_procedures.sql`      | Stored procedures (null counts, borough details) |
+| `dashboards/powerbi_dashboard.pbix`  | Power BI dashboard file with interactive visuals |
+| `results/results.doc`                 | Query outputs and summary of insights |
+| `README.md`                           | Project documentation |
+
 
 
 ## 👤 Author
