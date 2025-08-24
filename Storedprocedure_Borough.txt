@@ -1,0 +1,34 @@
+/******************************************************
+-- Stored procedure to get top zone details for a given Borough
+*******************************************************/
+DELIMITER $$
+
+CREATE PROCEDURE GetTripAveragesByHourBorough ( 
+    IN input_borough VARCHAR(50), 
+    IN input_hour INT 
+)
+BEGIN
+    SELECT
+        ROUND(AVG(base_fare), 2) AS avg_fare,
+        ROUND(AVG(NULLIF(congestion_surcharge, 0)), 2) AS avg_congestion_fare,
+        ROUND(AVG(NULLIF(tip_amount, 0)), 2) AS avg_tip,
+        ROUND(AVG(driver_pay), 2) AS avg_driver_pay
+    FROM trips t
+    JOIN location_lookup l 
+        ON t.PULocationID = l.LocationID
+    WHERE t.pickup_hour = input_hour
+      AND l.Borough = input_borough;
+END$$
+
+DELIMITER ;
+
+
+
+CALL  GetTripAveragesByHourBorough('Queens', 1);
+
+------------------------------------------------------------------------------------
+|   avg_fare  | avg_congestion_fare  |  avg_tip | avg_driver_pay   | 
+-------------------------------------------------------------------------------------
+|    25.38       |             2.87                     |    1.24     |          19.84             |
+-------------------------------------------------------------------------------------
+
