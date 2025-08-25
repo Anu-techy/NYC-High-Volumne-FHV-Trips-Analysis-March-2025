@@ -1,8 +1,8 @@
 ## 🚖 NYC Taxi Trip Data Analysis (20M+ Trips, March 2025)
 
-This project is an **end-to-end analysis** of NYC Taxi Trip data (20M+ records, March 2025) using **Python, SQL, Power BI, and Machine Learning**.  
+This project is an end-to-end analysis of NYC Taxi Trip data (20M+ records, March 2025) using Python, SQL, Power BI, and Machine Learning.  
 
-The goal was to uncover **trip patterns, passenger behavior, fare distribution, and demand forecasting** to enable smarter decision-making for transportation planning.
+The goal was to uncover trip patterns, passenger behavior, fare distribution, and demand forecasting to enable smarter decision-making for transportation planning.
 
 ## 🔧 Tech Stack
 - **Programming & Libraries:** Python (Pandas, Matplotlib, Seaborn, Scikit-learn)  
@@ -39,7 +39,7 @@ The goal was to uncover **trip patterns, passenger behavior, fare distribution, 
 | `NYC EDA-1.ipynb, NYC EDA-2.ipynb`       | for preprocessing and handling nulls |
 | `Queries.txt` | SQL queries for EDA and business insights with results |
 | `Storedprocedures.txt`      | Stored procedures (Zone summary, borough details) |
-| `dashboards/powerbi_dashboard.pbix`  | Power BI dashboard file with interactive visuals |
+| `dashboard screenshots`  | Power BI dashboards with interactive visuals |
 | `TripVolume_prediction.ipynb, Clustering.ipynb`  | Machine Learning Models |
 | `README.md`                           | Project documentation |
 
