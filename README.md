@@ -43,6 +43,13 @@ The goal was to uncover trip patterns, passenger behavior, fare distribution, an
 | `TripVolume_prediction.ipynb, Clustering.ipynb`  | Machine Learning Models |
 | `README.md`                           | Project documentation |
 
+## Insights
+Here are some key insights from the analysis:  
+- 🚖 Peak demand occurs between 6–9 PM across most boroughs.  
+- 💰 The highest revenue trips are concentrated in Manhattan.  
+- 🌙 Weekend nights show a surge in trip counts compared to weekdays.  
+- ⏱️ Average trip duration is 12–15 minutes, with outliers removed.  
+- 🌍 LaGuardia and JFK remain the top pickup/drop-off zones for long-distance trips.  
 
 
 ## 👤 Author
